@@ -1,12 +1,25 @@
 export interface User {
   id: string;
   email: string;
-  name: string;
+  role: string;
 }
 
 export interface AuthResponse {
-  user: User;
   token: string;
+  email: string;
+  role: string;
+  message?: string;
+}
+
+export interface LoginRequest {
+  email: string;
+  password: string;
+}
+
+export interface RegisterRequest {
+  email: string;
+  password: string;
+  role: string;
 }
 
 export interface ApiError {

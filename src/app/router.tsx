@@ -3,15 +3,14 @@ import MainLayout from '@/layouts/MainLayout';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import LandingPage from '@/pages/LandingPage';
 import LoginPage from '@/pages/LoginPage';
+import RegisterPage from '@/pages/RegisterPage';
 import HomePage from '@/pages/HomePage';
 import DashboardPage from '@/pages/DashboardPage';
 import AnalyticsPage from '@/pages/AnalyticsPage';
 import AdminPage from '@/pages/AdminPage';
-import { useAuthStore } from '@/store/authStore';
+import UnauthorizedPage from '@/pages/UnauthorizedPage';
 
 function AppRoutes() {
-  const { user } = useAuthStore();
-
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
@@ -19,7 +18,7 @@ function AppRoutes() {
         <Route
           path="home"
           element={
-            <ProtectedRoute user={user}>
+            <ProtectedRoute>
               <HomePage />
             </ProtectedRoute>
           }
@@ -27,14 +26,23 @@ function AppRoutes() {
         <Route
           path="dashboard"
           element={
-            <ProtectedRoute user={user}>
+            <ProtectedRoute>
               <DashboardPage />
             </ProtectedRoute>
           }
         />
         <Route path="analytics" element={<AnalyticsPage />} />
-        <Route path="admin" element={<AdminPage />} />
+        <Route
+          path="admin"
+          element={
+            <ProtectedRoute allowedRoles={['ADMIN']}>
+              <AdminPage />
+            </ProtectedRoute>
+          }
+        />
         <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
+        <Route path="unauthorized" element={<UnauthorizedPage />} />
         <Route path="*" element={<p>There's nothing here: 404!</p>} />
       </Route>
     </Routes>

@@ -1,26 +1,23 @@
 import apiClient from '@/services/api';
-import type { AuthResponse } from '@/types';
-import { API_ENDPOINTS } from '@/utils/constants';
+import type { AuthResponse, LoginRequest, RegisterRequest } from '@/types';
 
 export const authService = {
   async login(email: string, password: string): Promise<AuthResponse> {
-    const response = await apiClient.post<AuthResponse>(API_ENDPOINTS.AUTH.LOGIN, {
+    const request: LoginRequest = {
       email,
       password,
-    });
+    };
+    const response = await apiClient.post<AuthResponse>('/api/auth-service/auth/login', request);
     return response.data;
   },
 
-  async logout(): Promise<void> {
-    await apiClient.post(API_ENDPOINTS.AUTH.LOGOUT);
-  },
-
-  async register(email: string, password: string, name: string): Promise<AuthResponse> {
-    const response = await apiClient.post<AuthResponse>(API_ENDPOINTS.AUTH.REGISTER, {
+  async register(email: string, password: string, role: string): Promise<AuthResponse> {
+    const request: RegisterRequest = {
       email,
       password,
-      name,
-    });
+      role,
+    };
+    const response = await apiClient.post<AuthResponse>('/api/auth-service/auth/register', request);
     return response.data;
   },
 };

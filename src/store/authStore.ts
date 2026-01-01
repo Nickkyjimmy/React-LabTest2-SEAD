@@ -6,7 +6,6 @@ interface AuthState {
   user: User | null;
   token: string | null;
   isAuthenticated: boolean;
-  login: (email: string, password: string) => Promise<void>;
   logout: () => void;
   setUser: (user: User) => void;
   setToken: (token: string) => void;
@@ -18,26 +17,6 @@ export const useAuthStore = create<AuthState>()(
       user: null,
       token: null,
       isAuthenticated: false,
-      login: async (email: string, _password: string) => {
-        try {
-          const mockUser: User = {
-            id: '1',
-            email,
-            name: 'Demo User',
-          };
-          const mockToken = 'mock-jwt-token-' + Date.now();
-          
-          localStorage.setItem('auth_token', mockToken);
-          set({
-            user: mockUser,
-            token: mockToken,
-            isAuthenticated: true,
-          });
-        } catch (error) {
-          console.error('Login failed:', error);
-          throw error;
-        }
-      },
       logout: async () => {
         try {
         } catch (error) {

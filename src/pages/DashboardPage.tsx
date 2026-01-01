@@ -21,10 +21,10 @@ export default function DashboardPage() {
           <CardContent>
             <div className="space-y-2">
               <p className="text-sm text-gray-600">
-                <span className="font-medium">Name:</span> {user?.name}
+                <span className="font-medium">Email:</span> {user?.email}
               </p>
               <p className="text-sm text-gray-600">
-                <span className="font-medium">Email:</span> {user?.email}
+                <span className="font-medium">Role:</span> {user?.role}
               </p>
               <p className="text-sm text-gray-600">
                 <span className="font-medium">ID:</span> {user?.id}

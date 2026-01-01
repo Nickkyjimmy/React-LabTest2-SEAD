@@ -1,14 +1,20 @@
 import type { ReactNode } from 'react';
 import { useProtectedRoute } from '@/hooks/useProtectedRoute';
-import type { User } from '@/types';
 
 interface ProtectedRouteProps {
   children: ReactNode;
-  user: User | null;
+  allowedRoles?: string[];
+  redirectTo?: string;
+  unauthorizedRedirectTo?: string;
 }
 
-export default function ProtectedRoute({ children, user }: ProtectedRouteProps) {
-  const redirect = useProtectedRoute({ user });
+export default function ProtectedRoute({ 
+  children, 
+  allowedRoles, 
+  redirectTo,
+  unauthorizedRedirectTo 
+}: ProtectedRouteProps) {
+  const redirect = useProtectedRoute({ allowedRoles, redirectTo, unauthorizedRedirectTo });
 
   if (redirect) {
     return redirect;

@@ -1,5 +1,6 @@
 import { Link, useNavigate, Outlet } from 'react-router-dom';
 import { useAuthStore } from '@/store/authStore';
+import { Button } from '@/components/ui/button';
 
 export default function MainLayout() {
   const { isAuthenticated, logout } = useAuthStore();
@@ -39,16 +40,21 @@ export default function MainLayout() {
                 Admin
               </Link>
               {isAuthenticated ? (
-                <button
+                <Button
                   onClick={handleLogout}
-                  className="text-sm text-black hover:underline bg-transparent border-0 p-0 cursor-pointer"
+                  className=""
                 >
                   Logout
-                </button>
+                </Button>
               ) : (
-                <Link to="/login" className="text-sm text-black hover:underline no-underline">
-                  Login
-                </Link>
+                <>
+                  <Link to="/login" className="text-sm text-black hover:underline no-underline">
+                    Login
+                  </Link>
+                  <Link to="/register" className="text-sm text-black hover:underline no-underline">
+                    Register
+                  </Link>
+                </>
               )}
             </nav>
           </div>
