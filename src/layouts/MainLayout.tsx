@@ -39,6 +39,9 @@ export default function MainLayout() {
               <Link to="/admin" className="text-sm text-black hover:underline no-underline">
                 Admin
               </Link>
+              <Link to="/route" className="text-sm text-black hover:underline no-underline">
+                Route
+              </Link>
               {isAuthenticated ? (
                 <Button
                   onClick={handleLogout}

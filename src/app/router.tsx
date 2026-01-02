@@ -9,6 +9,8 @@ import DashboardPage from '@/pages/DashboardPage';
 import AnalyticsPage from '@/pages/AnalyticsPage';
 import AdminPage from '@/pages/AdminPage';
 import UnauthorizedPage from '@/pages/UnauthorizedPage';
+import RoutePage from '@/pages/RoutePage';
+import RouteDetailPage from '@/pages/RouteDetailPage';
 
 // Protected Route Wrapper - groups all protected routes
 function ProtectedRoutes({ allowedRoles }: { allowedRoles?: string[] }) {
@@ -28,6 +30,8 @@ function AppRoutes() {
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="unauthorized" element={<UnauthorizedPage />} />
+        <Route path="route" element={<RoutePage />} />
+        <Route path="route/:id" element={<RouteDetailPage />} />
         
         {/* Protected routes - no specific role required */}
         <Route element={<ProtectedRoutes />}>
@@ -43,6 +47,7 @@ function AppRoutes() {
         
         {/* 404 */}
         <Route path="*" element={<p>There's nothing here: 404!</p>} />
+        
       </Route>
     </Routes>
   );
