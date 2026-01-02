@@ -1,6 +1,6 @@
 import { useCountries } from '@/features/countries/hooks/useCountries';
 
-export default function LandingPage() {
+export default function CountriesPage() {
   const { countries, loading, error } = useCountries();
 
   if (loading) {

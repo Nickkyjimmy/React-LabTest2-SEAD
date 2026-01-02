@@ -21,12 +21,12 @@ export default function MainLayout() {
             </Link>
             <nav className="flex items-center space-x-6">
               <Link to="/" className="text-sm text-black hover:underline no-underline">
-                Landing
+                Home
               </Link>
               {isAuthenticated && (
                 <>
-                  <Link to="/home" className="text-sm text-black hover:underline no-underline">
-                    Home
+                  <Link to="/countries" className="text-sm text-black hover:underline no-underline">
+                    Countries
                   </Link>
                   <Link to="/dashboard" className="text-sm text-black hover:underline no-underline">
                     Dashboard
